@@ -1,4 +1,4 @@
-name: Build PlayerWhile all platforms
+﻿name: Build PlayerWhile all platforms
 
 on:
   push:
@@ -126,12 +126,16 @@ jobs:
       - name: Generate iOS runner
         run: flutter create --project-name playerwhile --org io.playerwhile --platforms=ios .
       - run: flutter pub get
-      - run: flutter build ios --release --no-codesign
+      - name: Build unsigned iOS app
+        run: |
+          flutter build ios --release --config-only --no-codesign
+          cd ios
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Release -sdk iphoneos -derivedDataPath ../build/ios_nosign CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" DEVELOPMENT_TEAM=""
       - name: Pack unsigned IPA
         run: |
           rm -rf Payload
           mkdir Payload
-          cp -R build/ios/iphoneos/Runner.app Payload/
+          cp -R build/ios_nosign/Build/Products/Release-iphoneos/Runner.app Payload/
           zip -qry PlayerWhile-iOS-unsigned.ipa Payload
       - uses: actions/upload-artifact@v4
         with:

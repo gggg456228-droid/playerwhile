@@ -644,7 +644,7 @@ class CharacterStore {
       } else {
         relative = p.posix.basename(file.path);
       }
-      final output = File(p.join(temp.path, ...p.posix.split(relative)));
+      final output = File(p.joinAll([temp.path, ...p.posix.split(relative)]));
       await output.parent.create(recursive: true);
       await output.writeAsBytes(bytes, flush: true);
     }
