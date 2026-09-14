@@ -1,0 +1,365 @@
+{
+  "name": "Филт Фиден",
+  "owner": "danil",
+  "is_placeholder": false,
+  "race": "Человек",
+  "custom_races": [],
+  "custom_skills": {},
+  "custom_stats": {},
+  "custom_fields": {},
+  "classes": [],
+  "level": 0,
+  "hp": {
+    "current": 10,
+    "max": 10,
+    "temp": 0
+  },
+  "speed": 30,
+  "initiative": 0,
+  "passive_perception": 10,
+  "ac": 10,
+  "proficiency_bonus": 2,
+  "proficiencies": "Языки: 1C, Python, Delphi, Scratch, русский, английский, немецкий\r\nТранспорт: ноги, велосипед, автомобиль\r\nИнструменты: электрика, строителя, сантехника",
+  "stats": {
+    "charisma": 12,
+    "constitution": 14,
+    "dexterity": 10,
+    "intelligence": 16,
+    "strength": 8,
+    "wisdom": 15
+  },
+  "skills": {
+    "Акробатика": 0,
+    "Атлетика": 0,
+    "Восприятие": 0,
+    "Выживание": 0,
+    "Выступление": 0,
+    "Запугивание": 0,
+    "История": 0,
+    "Ловкость рук": 0,
+    "Магия": 0,
+    "Медицина": 0,
+    "Обман": 0,
+    "Обращение с животными": 0,
+    "Природа": 0,
+    "Проницательность": 0,
+    "Расследование": 0,
+    "Религия": 0,
+    "Скрытность": 0,
+    "Убеждение": 0
+  },
+  "personality": {
+    "alignment": "Нейтральный",
+    "backstory": "Филт Фиден родился в небольшом городе в семье среднего достатка. Его мать Сотирия работала бухгалтером на почте, отец Габриэль электриком на подстанции; Филт унаследовал от отца внешность и повадки. С детства был спокойным и усидчивым, рано заинтересовался чтением, техникой и компьютерами. Близок с двоюродным братом Дэммером Ландом и другом детства Самаэлем Кроссом, а с младшей сестрой Наулой постоянно ссорится, хотя не позволяет другим её обижать. В школе лучше всего давались математика и химия. После 9 класса он ушёл в колледж на программиста, где особенно любит практические предметы с кодом. С детства носит сделанный на мастер классе славянский оберег, с подросткового возраста слушает тяжёлую музыку. С друзьями из колледжа лазает в старую шахту и снимает их приключения. Сейчас Филту 17 лет, он учится на третьем курсе и в автошколе; мать обещала отдать ему машину после получения прав.",
+    "bonds": "телефон как орган чувств, пьет только чай, любовь к тяжелой музыке, цепочка с топором, сумка на плечо, любит игры с хорошим сюжетом",
+    "flaws": " руки из жопы, страх неудачного будущего, потребность держать что-то в руке (н-р щелкать ручкой, гнуть линейку или перебирать в руке монетку)",
+    "ideals": "все люди равны, но некоторые равнее. если приложить достаточно усилий, то все получится, но порой результат не стоит этих усилий. любой опыт важен. будущее определимо, но не определено. я - центр своей реальности. существуют вещи важнее собственной жизни. ПО должно быть свободным.",
+    "traits": "лень, забывчивость, сквернословие, извращенец, рациональный, любит повыделываться, любопытный, предусмотрительный, часто шутит, атеист, подталкивает человека к решению задачи вместо ответа, любит когда все идет по шаблону, ищет наилегчайший путь, охотно пробует новое."
+  },
+  "general_info": {
+    "vision": "Обычное",
+    "armor": "",
+    "weapons": "",
+    "tools": "",
+    "languages": "",
+    "traits": [
+      {
+        "name": "Путь Зрителя | 1 ступень: Око Гора",
+        "description": "Позволяет видеть маглементы, духов, проклятия и следы использованных сил и т.д."
+      }
+    ],
+    "armor_extra": "",
+    "weapons_extra": "",
+    "tools_extra": "",
+    "languages_extra": ""
+  },
+  "appearance": [
+    {
+      "label": "Рост",
+      "value": "180 см"
+    },
+    {
+      "label": "Вес",
+      "value": "57 кг"
+    },
+    {
+      "label": "Возраст",
+      "value": "17"
+    },
+    {
+      "label": "Глаза",
+      "value": ""
+    },
+    {
+      "label": "Кожа",
+      "value": ""
+    },
+    {
+      "label": "Волосы",
+      "value": ""
+    }
+  ],
+  "equipment": [
+    {
+      "name": "Телефон (realme 25)",
+      "quantity": 1,
+      "type": "consumable",
+      "description": "Основной телефон Филта. Используется для связи, музыки, интернета, заметок и повседневных задач.",
+      "slot": "",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {},
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    },
+    {
+      "name": "Цепочка с топором",
+      "quantity": 1,
+      "type": "equipment",
+      "description": "Личная цепочка с подвеской в форме топора.",
+      "slot": "",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {},
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    },
+    {
+      "name": "Одежда (обычн)",
+      "quantity": 1,
+      "type": "equipment",
+      "description": "Обычная повседневная одежда.",
+      "slot": "body",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {
+          "ac": 1
+        },
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    },
+    {
+      "name": "Сумка на плечо",
+      "quantity": 1,
+      "type": "equipment",
+      "description": "Повседневная сумка Филта.",
+      "slot": "",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {},
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    },
+    {
+      "name": "Ключи от дома",
+      "quantity": 1,
+      "type": "consumable",
+      "description": "Ключи от дома.",
+      "slot": "",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {},
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    },
+    {
+      "name": "Набор отверток",
+      "quantity": 1,
+      "type": "consumable",
+      "description": "Набор обычных отвёрток.",
+      "slot": "",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {},
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    },
+    {
+      "name": "скрученный Оберег",
+      "quantity": 1,
+      "type": "consumable",
+      "description": "Маленькая безликая кукла оберег, сделанная на школьном мастер классе. Филт носит её с собой.",
+      "slot": "",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {},
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    },
+    {
+      "name": "Беспроводные наушники",
+      "quantity": 1,
+      "type": "consumable",
+      "description": "Наушники для музыки и повседневного использования.",
+      "slot": "",
+      "weapon_formula": "",
+      "two_handed": false,
+      "weapon_light": false,
+      "weapon_finesse": false,
+      "weapon_thrown": false,
+      "weapon_ranged": false,
+      "weapon_heavy": false,
+      "apply_saved_conditions": [],
+      "bonuses": {
+        "basic": {},
+        "stats": {},
+        "skills": {}
+      },
+      "equipped": false
+    }
+  ],
+  "equipped": {
+    "body": null,
+    "feet": null,
+    "head": null,
+    "left_finger": null,
+    "left_hand": null,
+    "left_weapon": null,
+    "legs": null,
+    "right_finger": null,
+    "right_hand": null,
+    "right_weapon": null
+  },
+  "currency": [
+    {
+      "name": "Каи",
+      "amount": 7
+    },
+    {
+      "name": "Далий",
+      "amount": 679
+    }
+  ],
+  "notes": [
+    {
+      "title": "Внешность",
+      "content": "Возраст: 17 лет; Пол: Мужской; Рост: 180 см; Вес: 57 кг"
+    }
+  ],
+  "spell_slots": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0
+  },
+  "spell_slots_used": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0
+  },
+  "prepared_spells": [],
+  "spell_schools": [],
+  "spells": [],
+  "favorite_spells": [],
+  "created_at": "2026-09-14T18:45:00.000000",
+  "_there_meta": {
+    "revision": 1,
+    "updated_at": "2026-09-14T18:45:00.000000",
+    "import_epoch": ""
+  },
+  "custom_actions": [],
+  "death_saves": {
+    "successes": [],
+    "failures": []
+  },
+  "saved_formulas": [],
+  "saved_conditions": [],
+  "exhaustion_level": 0,
+  "conditions": [],
+  "skill_bonuses": {
+    "Акробатика": 0,
+    "Атлетика": 0,
+    "Восприятие": 0,
+    "Выживание": 0,
+    "Выступление": 0,
+    "Запугивание": 0,
+    "История": 0,
+    "Ловкость рук": 0,
+    "Магия": 0,
+    "Медицина": 0,
+    "Обман": 0,
+    "Обращение с животными": 0,
+    "Природа": 0,
+    "Проницательность": 0,
+    "Расследование": 0,
+    "Религия": 0,
+    "Скрытность": 0,
+    "Убеждение": 0
+  }
+}
