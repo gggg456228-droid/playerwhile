@@ -1,0 +1,154 @@
+name: Build PlayerWhile all platforms
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "lib/**"
+      - "pubspec.yaml"
+      - ".github/workflows/build-all.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: playerwhile-release
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate Android runner
+        run: |
+          flutter create --project-name playerwhile --org io.playerwhile --platforms=android .
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('android/app/src/main/AndroidManifest.xml')
+          s = p.read_text()
+          if 'android.permission.INTERNET' not in s:
+              s = s.replace('<application', '<uses-permission android:name="android.permission.INTERNET"/>\n    <application', 1)
+          p.write_text(s)
+          PY
+      - run: flutter pub get
+      - run: flutter build apk --release
+      - name: Prepare artifact
+        run: cp build/app/outputs/flutter-apk/app-release.apk PlayerWhile-Android-universal.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: PlayerWhile-Android-universal.apk
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate Windows runner
+        run: flutter create --project-name playerwhile --org io.playerwhile --platforms=windows .
+      - run: flutter pub get
+      - run: flutter build windows --release
+      - name: Pack Windows bundle
+        shell: powershell
+        run: Compress-Archive -Path "build\windows\x64\runner\Release\*" -DestinationPath "PlayerWhile-Windows-x64.zip" -Force
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: PlayerWhile-Windows-x64.zip
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Linux dependencies
+        run: sudo apt-get update && sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate Linux runner
+        run: flutter create --project-name playerwhile --org io.playerwhile --platforms=linux .
+      - run: flutter pub get
+      - run: flutter build linux --release
+      - name: Pack Linux bundle
+        run: tar -C build/linux/x64/release -czf PlayerWhile-Linux-x64.tar.gz bundle
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: PlayerWhile-Linux-x64.tar.gz
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate macOS runner
+        run: |
+          flutter create --project-name playerwhile --org io.playerwhile --platforms=macos .
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ['Release.entitlements', 'DebugProfile.entitlements']:
+              p = Path('macos/Runner') / name
+              s = p.read_text()
+              if 'com.apple.security.network.client' not in s:
+                  s = s.replace('</dict>', '\t<key>com.apple.security.network.client</key>\n\t<true/>\n</dict>', 1)
+              p.write_text(s)
+          PY
+      - run: flutter pub get
+      - run: flutter build macos --release
+      - name: Pack macOS app
+        run: ditto -c -k --sequesterRsrc --keepParent build/macos/Build/Products/Release/playerwhile.app PlayerWhile-macOS-unsigned.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos
+          path: PlayerWhile-macOS-unsigned.zip
+
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate iOS runner
+        run: flutter create --project-name playerwhile --org io.playerwhile --platforms=ios .
+      - run: flutter pub get
+      - run: flutter build ios --release --no-codesign
+      - name: Pack unsigned IPA
+        run: |
+          rm -rf Payload
+          mkdir Payload
+          cp -R build/ios/iphoneos/Runner.app Payload/
+          zip -qry PlayerWhile-iOS-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios
+          path: PlayerWhile-iOS-unsigned.ipa
+
+  publish:
+    needs: [android, windows, linux, macos, ios]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Publish stable latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes || true
+          gh release create latest dist/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "PlayerWhile latest" --notes "Cross-platform build with the floating GitHub character updater. Android and desktop packages are ready to run. The iOS IPA is unsigned and requires Apple signing before installation."
